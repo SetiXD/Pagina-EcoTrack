@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoTrack Solutions - Tecnología inteligente para un futuro sostenible</title>
-    <meta name="description" content="Monitoreo ambiental inteligente mediante sensores IoT, IA y computación en la nube. Datos en tiempo real para decisiones sostenibles.">
-    <meta name="keywords" content="Monitoreo ambiental, Tecnología verde, Sensores IoT, Inteligencia artificial, Sostenibilidad, Smart Environment">
+    <title>EcoTrack Solutions - Monitoreo Ambiental Inteligente</title>
+    <meta name="description" content="Plataforma de monitoreo ambiental en tiempo real con IoT, Cloud Computing e IA para decisiones sostenibles.">
     <style>
         * {
             margin: 0;
@@ -13,14 +12,25 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0f0a;
-            color: #e8f5e9;
-            overflow-x: hidden;
+        :root {
+            --primary-green: #4caf50;
+            --light-green: #8bc34a;
+            --dark-bg: #0a0f0a;
+            --dark-card: #0f1810;
+            --text-light: #e8f5e9;
+            --text-green: #a5d6a7;
+            --brown-accent: #795548;
         }
 
-        /* Header & Navigation */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
         header {
             position: fixed;
             width: 100%;
@@ -35,32 +45,28 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: bold;
-            color: #4caf50;
+            color: var(--primary-green);
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .logo span {
-            color: #8bc34a;
-        }
-
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #c8e6c9;
+            color: var(--text-green);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s;
@@ -68,25 +74,58 @@
         }
 
         .nav-links a:hover {
-            color: #4caf50;
+            color: var(--primary-green);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #4caf50;
-            transition: width 0.3s;
+            right: 0;
+            background: rgba(10, 15, 10, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            z-index: 999;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .mobile-menu.active {
+            display: block;
         }
 
-        /* Hero Section */
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-green);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.1);
+            transition: all 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--primary-green);
+            padding-left: 1.5rem;
+        }
+
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -94,7 +133,6 @@
             justify-content: center;
             background: linear-gradient(135deg, #0a0f0a 0%, #1a2f1a 100%);
             position: relative;
-            overflow: hidden;
             padding-top: 80px;
         }
 
@@ -123,30 +161,18 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #4caf50 0%, #8bc34a 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: #a5d6a7;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            font-size: 1.3rem;
+            color: var(--text-green);
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
         .cta-buttons {
@@ -154,7 +180,6 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .btn {
@@ -170,7 +195,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, #66bb6a 100%);
             color: white;
             box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
         }
@@ -182,8 +207,8 @@
 
         .btn-secondary {
             background: transparent;
-            color: #4caf50;
-            border: 2px solid #4caf50;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
         }
 
         .btn-secondary:hover {
@@ -200,143 +225,251 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 3rem;
-            color: #4caf50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            color: #a5d6a7;
-            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            color: var(--text-green);
+            margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* About Section */
+        /* About */
         .about {
-            background: linear-gradient(135deg, #0f1810 0%, #1a2f1a 100%);
+            background: linear-gradient(135deg, var(--dark-card) 0%, #1a2f1a 100%);
         }
 
-        .about-content {
+        .mission-vision {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            color: #8bc34a;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #c8e6c9;
-            margin-bottom: 1rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .feature-card {
+        .mv-card {
             background: rgba(76, 175, 80, 0.05);
             padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .mv-card h3 {
+            color: var(--light-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .value-tag {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: var(--light-green);
+            font-weight: 600;
+        }
+
+        /* Selector de Solución */
+        .solution-selector {
+            background: var(--dark-bg);
+        }
+
+        .selector-container {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .selector-steps {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .step {
+            background: rgba(10, 15, 10, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .step h3 {
+            color: var(--light-green);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            background: var(--primary-green);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-card {
+            background: rgba(76, 175, 80, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        }
+
+        .option-card.selected {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: var(--light-green);
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card h4 {
+            color: var(--light-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card p {
+            color: var(--text-green);
+            font-size: 0.9rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quantity-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #4caf50;
-            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.2);
+        .quantity-btn:hover {
+            background: var(--light-green);
+            transform: scale(1.1);
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .quantity-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            min-width: 50px;
+            text-align: center;
         }
 
-        .feature-card h4 {
-            color: #8bc34a;
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
+        .summary-box {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary-green);
+            margin-top: 2rem;
         }
 
-        .feature-card p {
-            color: #a5d6a7;
-            font-size: 0.95rem;
+        .summary-box h3 {
+            color: var(--light-green);
+            margin-bottom: 1.5rem;
         }
 
-        /* Services Section */
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .summary-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-top: 1rem;
+        }
+
+        /* Services */
         .services {
-            background: #0a0f0a;
+            background: var(--dark-bg);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .service-card {
             background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.05) 100%);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
             border: 1px solid rgba(76, 175, 80, 0.2);
             transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #4caf50, #8bc34a);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 50px rgba(76, 175, 80, 0.3);
-            border-color: #4caf50;
+            border-color: var(--primary-green);
         }
 
         .service-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            color: #8bc34a;
+            color: var(--light-green);
             margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
 
         .service-card ul {
             list-style: none;
-            color: #a5d6a7;
+            color: var(--text-green);
         }
 
         .service-card li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
             padding-left: 1.5rem;
             position: relative;
         }
@@ -345,71 +478,149 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #4caf50;
+            color: var(--primary-green);
             font-weight: bold;
         }
 
-        /* Tech Section */
-        .tech {
-            background: linear-gradient(135deg, #0f1810 0%, #1a2f1a 100%);
+        /* Plans */
+        .plans {
+            background: linear-gradient(135deg, var(--dark-card) 0%, #1a2f1a 100%);
         }
 
-        .tech-grid {
+        .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .tech-item {
+        .plan-card {
             background: rgba(76, 175, 80, 0.05);
-            padding: 2rem 1rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(76, 175, 80, 0.15);
-            transition: all 0.3s;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(76, 175, 80, 0.2);
+            transition: all 0.4s;
+            position: relative;
         }
 
-        .tech-item:hover {
-            background: rgba(76, 175, 80, 0.1);
-            transform: scale(1.05);
-            border-color: #4caf50;
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+            box-shadow: 0 20px 60px rgba(76, 175, 80, 0.4);
         }
 
-        .tech-item span {
-            font-size: 2.5rem;
-            display: block;
+        .plan-card.featured {
+            border-color: var(--light-green);
+            box-shadow: 0 10px 40px rgba(139, 195, 74, 0.3);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--light-green);
+            color: var(--dark-bg);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .plan-card h3 {
+            color: var(--light-green);
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
 
-        .tech-item p {
-            color: #8bc34a;
-            font-weight: 600;
-            font-size: 0.95rem;
+        .plan-price {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            font-weight: bold;
+            margin: 1rem 0;
         }
 
-        /* Contact Section */
+        .plan-price small {
+            font-size: 1rem;
+            color: var(--text-green);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            color: var(--text-green);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--dark-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(76, 175, 80, 0.05);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--light-green);
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background: rgba(76, 175, 80, 0.08);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-green);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Contact */
         .contact {
-            background: #0a0f0a;
+            background: linear-gradient(135deg, var(--dark-card) 0%, #1a2f1a 100%);
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+            gap: 3rem;
         }
 
         .contact-info {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.05) 100%);
-            padding: 3rem;
+            background: rgba(76, 175, 80, 0.05);
+            padding: 2.5rem;
             border-radius: 20px;
             border: 1px solid rgba(76, 175, 80, 0.2);
-        }
-
-        .contact-info h3 {
-            color: #8bc34a;
-            font-size: 2rem;
-            margin-bottom: 2rem;
         }
 
         .contact-item {
@@ -423,18 +634,14 @@
             font-size: 2rem;
         }
 
-        .contact-item div h4 {
-            color: #4caf50;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item div p {
-            color: #a5d6a7;
+        .contact-item h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.3rem;
         }
 
         .contact-form {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.05) 100%);
-            padding: 3rem;
+            background: rgba(76, 175, 80, 0.05);
+            padding: 2.5rem;
             border-radius: 20px;
             border: 1px solid rgba(76, 175, 80, 0.2);
         }
@@ -445,7 +652,7 @@
 
         .form-group label {
             display: block;
-            color: #8bc34a;
+            color: var(--light-green);
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
@@ -457,7 +664,7 @@
             background: rgba(10, 15, 10, 0.5);
             border: 1px solid rgba(76, 175, 80, 0.3);
             border-radius: 10px;
-            color: #e8f5e9;
+            color: var(--text-light);
             font-size: 1rem;
             transition: all 0.3s;
         }
@@ -465,7 +672,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #4caf50;
+            border-color: var(--primary-green);
             box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
         }
 
@@ -482,44 +689,250 @@
             border-top: 1px solid rgba(76, 175, 80, 0.2);
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
         .footer-logo {
             font-size: 1.5rem;
-            color: #4caf50;
+            color: var(--primary-green);
             font-weight: bold;
             margin-bottom: 1rem;
-        }
-
-        .footer-text {
-            color: #a5d6a7;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            color: #4caf50;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #8bc34a;
-            transform: translateY(-3px);
         }
 
         .copyright {
             color: #6b8e6f;
             font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0f1810 0%, #1a2f1a 100%);
+            padding: 0;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            padding: 2rem;
+            border-radius: 18px 18px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .quote-result {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .quote-result.active {
+            display: block;
+        }
+
+        .result-card {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary-green);
+            margin-bottom: 2rem;
+        }
+
+        .result-card h3 {
+            color: var(--light-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+            color: var(--text-green);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item strong {
+            color: var(--light-green);
+        }
+
+        .result-total {
+            background: rgba(76, 175, 80, 0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .result-total h4 {
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-total p {
+            color: var(--text-green);
+            font-size: 0.95rem;
+        }
+
+        .plans-preview {
+            margin-top: 2rem;
+        }
+
+        .plans-preview h3 {
+            color: var(--light-green);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .mini-plan-card {
+            background: rgba(76, 175, 80, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+
+        .mini-plan-card:hover {
+            border-color: var(--primary-green);
+            transform: translateX(5px);
+        }
+
+        .mini-plan-card.recommended {
+            border: 2px solid var(--light-green);
+            background: rgba(139, 195, 74, 0.1);
+            position: relative;
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: var(--light-green);
+            color: var(--dark-bg);
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .mini-plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .mini-plan-header h4 {
+            color: var(--light-green);
+            margin: 0;
+        }
+
+        .mini-plan-price {
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .mini-plan-features {
+            color: var(--text-green);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar para modal */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: var(--light-green);
         }
 
         /* Responsive */
@@ -528,110 +941,425 @@
                 display: none;
             }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
-            .about-content,
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 3rem 4%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .about-features {
+            .plans-grid {
                 grid-template-columns: 1fr;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .selector-container {
+                padding: 1.5rem;
+            }
+
+            .option-card {
+                padding: 1.2rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            .values-list {
+                gap: 0.5rem;
+            }
+
+            .value-tag {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
-            <div class="logo">🌱 EcoTrack <span>Solutions</span></div>
+            <div class="logo">🌱 EcoTrack Solutions</div>
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#tech">Tecnología</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#evaluacion">Evaluación</a></li>
+                <li><a href="#selector">Configurar</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#planes">Planes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#inicio" onclick="toggleMobileMenu()">Inicio</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()">Nosotros</a>
+            <a href="#evaluacion" onclick="toggleMobileMenu()">Evaluación</a>
+            <a href="#selector" onclick="toggleMobileMenu()">Configurar</a>
+            <a href="#servicios" onclick="toggleMobileMenu()">Servicios</a>
+            <a href="#planes" onclick="toggleMobileMenu()">Planes</a>
+            <a href="#contacto" onclick="toggleMobileMenu()">Contacto</a>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero -->
+    <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>EcoTrack Solutions</h1>
-            <p>Tecnología inteligente para un futuro sostenible</p>
+            <p>EcoTrack Solutions es una startup tecnológica orientada al <strong>monitoreo ambiental inteligente en tiempo real</strong>, que utiliza tecnologías como Internet de las Cosas (IoT), computación en la nube y analítica de datos para apoyar la toma de decisiones sostenibles.</p>
+            <p>Nuestra plataforma permite recopilar, analizar y visualizar información ambiental de manera clara y confiable, ayudando a organizaciones, empresas e instituciones a reducir riesgos ambientales, optimizar recursos y cumplir estándares de sostenibilidad.</p>
             <div class="cta-buttons">
-                <a href="#services" class="btn btn-primary">Descubre Nuestros Servicios</a>
-                <a href="#contact" class="btn btn-secondary">Contáctanos</a>
+                <a href="#selector" class="btn btn-primary">Configurar Mi Solución</a>
+                <a href="#contacto" class="btn btn-secondary">Solicitar Demo</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- About -->
+    <section id="nosotros" class="about">
         <h2 class="section-title">¿Qué es EcoTrack Solutions?</h2>
-        <p class="section-subtitle">Transformamos datos ambientales en decisiones inteligentes para un futuro sostenible</p>
+        <p class="section-subtitle">EcoTrack Solutions nace como una iniciativa tecnológica frente a la creciente necesidad de controlar y gestionar el impacto ambiental de forma eficiente. La startup combina innovación digital y responsabilidad ambiental para ofrecer soluciones modernas que faciliten el acceso a información ambiental precisa.</p>
         
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Nuestra Misión</h3>
-                <p>Desarrollar soluciones tecnológicas innovadoras que permitan monitorear y proteger el medio ambiente mediante el uso de datos en tiempo real, promoviendo la sostenibilidad y la toma de decisiones responsables.</p>
-                
-                <h3 style="margin-top: 2rem;">Nuestra Visión</h3>
-                <p>Ser una startup líder en soluciones de monitoreo ambiental inteligente a nivel regional, contribuyendo activamente a la protección del medio ambiente y al desarrollo sostenible mediante la transformación digital.</p>
+        <div class="mission-vision">
+            <div class="mv-card">
+                <h3>🎯 Misión</h3>
+                <p>Desarrollar soluciones tecnológicas que permitan el monitoreo ambiental en tiempo real, apoyando la toma de decisiones responsables y sostenibles mediante el uso de tecnologías digitales avanzadas.</p>
+            </div>
+            <div class="mv-card">
+                <h3>🌎 Visión</h3>
+                <p>Ser una startup líder en soluciones de monitoreo ambiental inteligente en Latinoamérica, reconocida por su innovación, confiabilidad y compromiso con la sostenibilidad.</p>
+            </div>
+        </div>
+
+        <h3 class="section-title" style="margin-top: 3rem; font-size: 2rem;">Nuestros Valores</h3>
+        <div class="values-list">
+            <span class="value-tag">💡 Innovación</span>
+            <span class="value-tag">🌱 Responsabilidad ambiental</span>
+            <span class="value-tag">🔍 Transparencia</span>
+            <span class="value-tag">⚙️ Compromiso tecnológico</span>
+            <span class="value-tag">📈 Mejora continua</span>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#evaluacion" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                🔍 Realizar Mi Evaluación de Entorno
+            </a>
+        </div>
+    </section>
+
+    <!-- Evaluation Section -->
+    <section id="evaluacion" class="services">
+        <h2 class="section-title">Evaluación y Diagnóstico Ambiental</h2>
+        <p class="section-subtitle">EcoTrack Solutions transforma los datos recopilados en información estratégica para la toma de decisiones</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Evaluación del Estado Actual</h3>
+                <p style="color: var(--text-green); line-height: 1.8;">Análisis completo del estado ambiental actual de tu entorno, identificando los principales indicadores y su comportamiento en tiempo real.</p>
             </div>
             
-            <div class="about-features">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h4>Problema que Resolvemos</h4>
-                    <p>Eliminamos la falta de información ambiental en tiempo real y la dificultad para anticipar riesgos ambientales.</p>
+            <div class="service-card">
+                <div class="service-icon">⚠️</div>
+                <h3>Identificación de Riesgos</h3>
+                <p style="color: var(--text-green); line-height: 1.8;">Detección temprana de riesgos potenciales basada en análisis inteligente de patrones y umbrales críticos establecidos.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Comparación Histórica</h3>
+                <p style="color: var(--text-green); line-height: 1.8;">Visualización de tendencias y comparación de datos históricos para identificar cambios significativos en el comportamiento ambiental.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💡</div>
+                <h3>Recomendaciones Automáticas</h3>
+                <p style="color: var(--text-green); line-height: 1.8;">Sugerencias basadas en análisis de datos que facilitan la toma de decisiones oportunas y fundamentadas.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center; background: rgba(76, 175, 80, 0.05); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(76, 175, 80, 0.2);">
+            <h3 style="color: var(--light-green); margin-bottom: 1rem; font-size: 1.8rem;">¿Listo para conocer el estado de tu entorno?</h3>
+            <p style="color: var(--text-green); margin-bottom: 2rem; font-size: 1.1rem;">Configura tu solución personalizada y comienza tu evaluación ambiental</p>
+            <a href="#selector" class="btn btn-primary" style="font-size: 1.1rem;">Configurar Mi Solución Ahora</a>
+        </div>
+    </section>
+
+    <!-- Solution Selector -->
+    <section id="selector" class="solution-selector">
+        <h2 class="section-title">Configura Tu Solución Ambiental</h2>
+        <p class="section-subtitle">Personaliza tu sistema de monitoreo según tus necesidades específicas</p>
+        
+        <div class="selector-container">
+            <div class="selector-steps">
+                
+                <!-- Step 1: Variables -->
+                <div class="step">
+                    <h3><span class="step-number">1</span> Selecciona las Variables a Monitorear</h3>
+                    <div class="options-grid" id="variables">
+                        <div class="option-card" data-variable="aire">
+                            <div class="option-icon">💨</div>
+                            <h4>Calidad del Aire</h4>
+                            <p>CO2, PM2.5, PM10</p>
+                        </div>
+                        <div class="option-card" data-variable="temperatura">
+                            <div class="option-icon">🌡️</div>
+                            <h4>Temperatura</h4>
+                            <p>Temperatura ambiente</p>
+                        </div>
+                        <div class="option-card" data-variable="humedad">
+                            <div class="option-icon">💧</div>
+                            <h4>Humedad</h4>
+                            <p>Humedad relativa</p>
+                        </div>
+                        <div class="option-card" data-variable="ruido">
+                            <div class="option-icon">🔊</div>
+                            <h4>Ruido Ambiental</h4>
+                            <p>Decibeles (dB)</p>
+                        </div>
+                        <div class="option-card" data-variable="agua">
+                            <div class="option-icon">🌊</div>
+                            <h4>Calidad del Agua</h4>
+                            <p>pH, turbidez, oxígeno</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h4>Nuestra Solución</h4>
-                    <p>Plataforma digital integrada con sensores IoT, IA y análisis en tiempo real para decisiones sostenibles.</p>
+
+                <!-- Step 2: Cantidad -->
+                <div class="step">
+                    <h3><span class="step-number">2</span> Cantidad de Sensores</h3>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" onclick="changeSensors(-1)">−</button>
+                        <span class="quantity-value" id="sensorCount">1</span>
+                        <button class="quantity-btn" onclick="changeSensors(1)">+</button>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h4>Innovación Continua</h4>
-                    <p>Tecnología moderna y confiable con enfoque en automatización y transformación digital.</p>
+
+                <!-- Step 3: Frecuencia -->
+                <div class="step">
+                    <h3><span class="step-number">3</span> Frecuencia de Actualización</h3>
+                    <div class="options-grid" id="frequency">
+                        <div class="option-card" data-freq="realtime">
+                            <div class="option-icon">⚡</div>
+                            <h4>Tiempo Real</h4>
+                            <p>Cada 30 segundos</p>
+                        </div>
+                        <div class="option-card" data-freq="5min">
+                            <div class="option-icon">⏱️</div>
+                            <h4>Cada 5 minutos</h4>
+                            <p>288 datos/día</p>
+                        </div>
+                        <div class="option-card" data-freq="15min">
+                            <div class="option-icon">⏰</div>
+                            <h4>Cada 15 minutos</h4>
+                            <p>96 datos/día</p>
+                        </div>
+                        <div class="option-card" data-freq="hourly">
+                            <div class="option-icon">🕐</div>
+                            <h4>Cada hora</h4>
+                            <p>24 datos/día</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h4>Impacto Real</h4>
-                    <p>Datos confiables que generan acciones concretas para proteger nuestro planeta.</p>
+
+                <!-- Summary -->
+                <div class="summary-box">
+                    <h3>📋 Resumen de Tu Configuración</h3>
+                    <div class="summary-item">
+                        <span>Variables seleccionadas:</span>
+                        <span id="summaryVariables">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Cantidad de sensores:</span>
+                        <span id="summarySensors">1</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Frecuencia de actualización:</span>
+                        <span id="summaryFreq">No seleccionada</span>
+                    </div>
+                    <div class="summary-item summary-total">
+                        <span>Plan recomendado:</span>
+                        <span id="recommendedPlan">Selecciona opciones</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="openQuoteModal()">
+                        Ver Mi Cotización Completa
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <p class="section-subtitle">Soluciones completas de monitoreo ambiental inteligente</p>
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📋 Tu Cotización Personalizada</h2>
+                <button class="close-modal" onclick="closeQuoteModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="quoteResult" class="quote-result">
+                    <div class="result-card">
+                        <h3>🌱 Configuración Seleccionada</h3>
+                        <div class="result-item">
+                            <span><strong>Variables ambientales:</strong></span>
+                            <span id="modalVariables">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span><strong>Cantidad de sensores:</strong></span>
+                            <span id="modalSensors">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span><strong>Frecuencia de actualización:</strong></span>
+                            <span id="modalFreq">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span><strong>Costo de instalación:</strong></span>
+                            <span id="modalInstallation">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span><strong>Capacitación inicial:</strong></span>
+                            <span>S/. 190 (USD 50)</span>
+                        </div>
+                        
+                        <div class="result-total">
+                            <h4 id="modalRecommendedPlan">Plan Recomendado</h4>
+                            <p id="modalPlanPrice">-</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem;">+ Costo inicial de implementación</p>
+                        </div>
+                    </div>
+
+                    <div class="plans-preview">
+                        <h3>💼 Planes Disponibles</h3>
+                        
+                        <div class="mini-plan-card" id="basicPlanCard">
+                            <div class="mini-plan-header">
+                                <h4>Plan Básico</h4>
+                                <div class="mini-plan-price">S/. 95/mes (USD 25/mes)</div>
+                            </div>
+                            <div class="mini-plan-features">
+                                ✓ Hasta 2 sensores | ✓ Monitoreo en tiempo real | ✓ Dashboard básico | ✓ Reportes mensuales
+                            </div>
+                        </div>
+
+                        <div class="mini-plan-card" id="proPlanCard">
+                            <div class="mini-plan-header">
+                                <h4>Plan Profesional</h4>
+                                <div class="mini-plan-price">S/. 230/mes (USD 60/mes)</div>
+                            </div>
+                            <div class="mini-plan-features">
+                                ✓ Hasta 5 sensores | ✓ Reportes automáticos | ✓ Alertas personalizadas | ✓ Análisis predictivo
+                            </div>
+                        </div>
+
+                        <div class="mini-plan-card" id="enterprisePlanCard">
+                            <div class="mini-plan-header">
+                                <h4>Plan Empresarial</h4>
+                                <div class="mini-plan-price">S/. 460/mes (USD 120/mes)</div>
+                            </div>
+                            <div class="mini-plan-features">
+                                ✓ Sensores ilimitados | ✓ Analítica avanzada | ✓ Soporte 24/7 | ✓ API personalizada
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#contacto" class="btn btn-primary" onclick="closeQuoteModal()" style="display: inline-block;">
+                            Solicitar Contacto Comercial
+                        </a>
+                        <p style="color: var(--text-green); margin-top: 1rem; font-size: 0.9rem;">
+                            Un asesor se comunicará contigo en menos de 24 horas
+                        </p>
+                    </div>
+                </div>
+
+                <div id="quoteEmpty" style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">⚠️</div>
+                    <h3 style="color: var(--light-green); margin-bottom: 1rem;">Configuración Incompleta</h3>
+                    <p style="color: var(--text-green); margin-bottom: 2rem;">
+                        Por favor, completa tu configuración seleccionando variables ambientales y frecuencia de actualización.
+                    </p>
+                    <button class="btn btn-secondary" onclick="closeQuoteModal()">
+                        Volver a Configurar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Soluciones y Servicios</h2>
+        <p class="section-subtitle">EcoTrack Solutions ofrece una plataforma integral de monitoreo ambiental diseñada para adaptarse a distintos contextos y necesidades</p>
         
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🌡️</div>
-                <h3>Monitoreo en Tiempo Real</h3>
+                <h3>Monitoreo Ambiental</h3>
                 <ul>
                     <li>Calidad del aire</li>
                     <li>Temperatura y humedad</li>
-                    <li>Niveles de contaminación</li>
-                    <li>Datos 24/7</li>
+                    <li>Ruido ambiental</li>
+                    <li>Calidad del agua (según configuración)</li>
+                    <li>Datos recolectados en tiempo real mediante sensores IoT</li>
                 </ul>
             </div>
             
@@ -639,82 +1367,180 @@
                 <div class="service-icon">📊</div>
                 <h3>Análisis y Reportes</h3>
                 <ul>
-                    <li>Reportes automáticos</li>
-                    <li>Análisis predictivo</li>
-                    <li>Indicadores ambientales</li>
-                    <li>Visualización intuitiva</li>
+                    <li>Dashboards interactivos</li>
+                    <li>Reportes automáticos descargables</li>
+                    <li>Visualización histórica de datos</li>
+                    <li>Alertas inteligentes ante valores críticos</li>
                 </ul>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🚨</div>
-                <h3>Alertas Inteligentes</h3>
+                <div class="service-icon">🔍</div>
+                <h3>Evaluación y Diagnóstico</h3>
                 <ul>
-                    <li>Notificaciones en tiempo real</li>
-                    <li>Prevención de riesgos</li>
-                    <li>Valores críticos</li>
-                    <li>Respuesta rápida</li>
+                    <li>Evaluación del estado ambiental actual</li>
+                    <li>Identificación de riesgos potenciales</li>
+                    <li>Comparación de datos históricos</li>
+                    <li>Recomendaciones automáticas basadas en análisis</li>
                 </ul>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">☁️</div>
-                <h3>Plataforma en la Nube</h3>
+                <div class="service-icon">🔒</div>
+                <h3>Seguridad y Cumplimiento</h3>
                 <ul>
-                    <li>Acceso 24/7</li>
-                    <li>Escalable y segura</li>
-                    <li>Multidispositivo</li>
-                    <li>Alta disponibilidad</li>
+                    <li>Protección de datos en la nube</li>
+                    <li>Control de accesos por usuario</li>
+                    <li>Respaldo automático de información</li>
+                    <li>Cumplimiento de buenas prácticas de seguridad digital</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Technology Section -->
-    <section id="tech" class="tech">
-        <h2 class="section-title">Tecnologías que Utilizamos</h2>
-        <p class="section-subtitle">Infraestructura moderna y robusta para soluciones de vanguardia</p>
+    <!-- Plans -->
+    <section id="planes" class="plans">
+        <h2 class="section-title">Planes y Costos</h2>
+        <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades</p>
         
-        <div class="tech-grid">
-            <div class="tech-item">
-                <span>🔗</span>
-                <p>IoT Sensors</p>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>Plan Básico</h3>
+                <div class="plan-price">
+                    S/. 95 <small>/mes</small><br>
+                    <span style="font-size: 1.5rem;">USD 25 <small>/mes</small></span>
+                </div>
+                <ul class="plan-features">
+                    <li>Hasta 2 sensores</li>
+                    <li>Monitoreo en tiempo real</li>
+                    <li>Dashboard básico</li>
+                    <li>Reportes mensuales</li>
+                    <li>Soporte por email</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Seleccionar Plan</button>
             </div>
-            <div class="tech-item">
-                <span>☁️</span>
-                <p>Cloud Computing</p>
+            
+            <div class="plan-card featured">
+                <div class="plan-badge">Más Popular</div>
+                <h3>Plan Profesional</h3>
+                <div class="plan-price">
+                    S/. 230 <small>/mes</small><br>
+                    <span style="font-size: 1.5rem;">USD 60 <small>/mes</small></span>
+                </div>
+                <ul class="plan-features">
+                    <li>Hasta 5 sensores</li>
+                    <li>Reportes automáticos</li>
+                    <li>Alertas personalizadas</li>
+                    <li>Dashboard avanzado</li>
+                    <li>Análisis predictivo</li>
+                    <li>Soporte prioritario</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Seleccionar Plan</button>
             </div>
-            <div class="tech-item">
-                <span>🤖</span>
-                <p>Machine Learning</p>
+            
+            <div class="plan-card">
+                <h3>Plan Empresarial</h3>
+                <div class="plan-price">
+                    S/. 460 <small>/mes</small><br>
+                    <span style="font-size: 1.5rem;">USD 120 <small>/mes</small></span>
+                </div>
+                <ul class="plan-features">
+                    <li>Sensores ilimitados</li>
+                    <li>Analítica avanzada</li>
+                    <li>Soporte técnico especializado</li>
+                    <li>API personalizada</li>
+                    <li>Capacitación incluida</li>
+                    <li>Integraciones personalizadas</li>
+                    <li>Soporte 24/7</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Seleccionar Plan</button>
             </div>
-            <div class="tech-item">
-                <span>📦</span>
-                <p>Docker</p>
-            </div>
-            <div class="tech-item">
-                <span>⚙️</span>
-                <p>Kubernetes</p>
-            </div>
-            <div class="tech-item">
-                <span>📡</span>
-                <p>APIs REST</p>
-            </div>
-            <div class="tech-item">
-                <span>💾</span>
-                <p>Big Data</p>
-            </div>
-            <div class="tech-item">
-                <span>⚡</span>
-                <p>Edge Computing</p>
+        </div>
+
+        <div style="margin-top: 4rem; background: rgba(76, 175, 80, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(76, 175, 80, 0.2);">
+            <h3 style="color: var(--light-green); margin-bottom: 1.5rem; text-align: center;">Costos de Implementación</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
+                    <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Instalación por sensor</h4>
+                    <p style="font-size: 1.3rem; color: var(--light-green); font-weight: bold;">S/. 300 / USD 80</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+                    <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Capacitación inicial</h4>
+                    <p style="font-size: 1.3rem; color: var(--light-green); font-weight: bold;">S/. 190 / USD 50</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎁</div>
+                    <h4 style="color: var(--primary-green); margin-bottom: 0.5rem;">Demo gratuita</h4>
+                    <p style="font-size: 1.3rem; color: var(--light-green); font-weight: bold;">7 días</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Resolvemos tus dudas sobre EcoTrack Solutions</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>¿Necesito conocimientos técnicos para usar la plataforma?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    No, la plataforma es intuitiva y fácil de usar. Está diseñada para que cualquier usuario pueda acceder a sus datos ambientales sin necesidad de conocimientos técnicos avanzados.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>¿Puedo cambiar de plan?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sí, los planes son escalables según tus necesidades. Puedes actualizar o cambiar tu plan en cualquier momento desde tu panel de control.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>¿Los datos se almacenan de forma segura?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sí, todos los datos están protegidos en la nube con los más altos estándares de seguridad. Contamos con respaldos automáticos y control de accesos por usuario.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>¿Qué incluye la demo gratuita?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    La demo incluye acceso temporal a dashboards, datos simulados y navegación completa del sistema durante 7 días sin costo alguno.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>¿Qué tecnologías utiliza EcoTrack Solutions?</span>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Utilizamos Internet de las Cosas (IoT), computación en la nube, Big Data, Inteligencia Artificial y arquitectura de microservicios para garantizar escalabilidad, eficiencia y confiabilidad.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="contact">
         <h2 class="section-title">Contáctanos</h2>
-        <p class="section-subtitle">¿Listo para transformar tu gestión ambiental? Hablemos</p>
+        <p class="section-subtitle">¿Deseas más información sobre EcoTrack Solutions? Estamos aquí para ayudarte</p>
         
         <div class="contact-container">
             <div class="contact-info">
@@ -724,15 +1550,15 @@
                     <span>📧</span>
                     <div>
                         <h4>Email</h4>
-                        <p>contacto@ecotrack.com</p>
+                        <p>contacto@ecotracksolutions.com</p>
                     </div>
                 </div>
                 
                 <div class="contact-item">
                     <span>📱</span>
                     <div>
-                        <h4>Teléfono</h4>
-                        <p>+51 970609686 o 979492909</p>
+                        <h4>WhatsApp</h4>
+                        <p>+51 999 999 999</p>
                     </div>
                 </div>
                 
@@ -751,9 +1577,15 @@
                         <p>Lun - Vie: 9:00 AM - 6:00 PM</p>
                     </div>
                 </div>
+
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(76, 175, 80, 0.2);">
+                    <h4 style="color: var(--light-green); margin-bottom: 1rem;">Solicita tu Demo Gratuita</h4>
+                    <p style="color: var(--text-green);">Acceso completo durante 7 días para que conozcas todas las funcionalidades de nuestra plataforma.</p>
+                </div>
             </div>
             
             <div class="contact-form">
+                <h3 style="color: var(--light-green); margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Nombre Completo</label>
@@ -763,6 +1595,11 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Empresa / Institución</label>
+                        <input type="text" id="company" name="company">
                     </div>
                     
                     <div class="form-group">
@@ -778,22 +1615,41 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">🌱 EcoTrack Solutions</div>
-            <p class="footer-text">Tecnología inteligente para un futuro sostenible</p>
-            
-            <div class="social-links">
-                <a href="#" title="Facebook">📘</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="LinkedIn">💼</a>
-                <a href="#" title="Instagram">📸</a>
-            </div>
-            
-            <p class="copyright">© 2024 EcoTrack Solutions. Todos los derechos reservados.</p>
-        </div>
+        <div class="footer-logo">🌱 EcoTrack Solutions</div>
+        <p style="color: var(--text-green); margin-bottom: 1rem;">Tecnología inteligente para un futuro sostenible</p>
+        <p style="color: var(--text-green); margin-bottom: 1.5rem;">Monitorea hoy para proteger el mañana</p>
+        <p class="copyright">© 2024 EcoTrack Solutions. Todos los derechos reservados.</p>
     </footer>
 
     <script>
+        // State
+        let selectedVariables = new Set();
+        let sensorCount = 1;
+        let selectedFrequency = null;
+
+        // Plan data
+        const planData = {
+            basic: { name: 'Plan Básico', priceSOL: 95, priceUSD: 25, maxSensors: 2 },
+            professional: { name: 'Plan Profesional', priceSOL: 230, priceUSD: 60, maxSensors: 5 },
+            enterprise: { name: 'Plan Empresarial', priceSOL: 460, priceUSD: 120, maxSensors: 999 }
+        };
+
+        // Variable names
+        const variableNames = {
+            aire: 'Calidad del aire',
+            temperatura: 'Temperatura',
+            humedad: 'Humedad',
+            ruido: 'Ruido ambiental',
+            agua: 'Calidad del agua'
+        };
+
+        const freqNames = {
+            'realtime': 'Tiempo Real (30s)',
+            '5min': 'Cada 5 minutos',
+            '15min': 'Cada 15 minutos',
+            'hourly': 'Cada hora'
+        };
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -805,20 +1661,192 @@
             });
         });
 
-        // Form submission
+        // Variable selection
+        document.querySelectorAll('#variables .option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const variable = this.dataset.variable;
+                
+                if (selectedVariables.has(variable)) {
+                    selectedVariables.delete(variable);
+                    this.classList.remove('selected');
+                } else {
+                    selectedVariables.add(variable);
+                    this.classList.add('selected');
+                }
+                
+                updateSummary();
+            });
+        });
+
+        // Frequency selection
+        document.querySelectorAll('#frequency .option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('#frequency .option-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedFrequency = this.dataset.freq;
+                updateSummary();
+            });
+        });
+
+        // Sensor count
+        function changeSensors(delta) {
+            sensorCount = Math.max(1, sensorCount + delta);
+            document.getElementById('sensorCount').textContent = sensorCount;
+            updateSummary();
+        }
+
+        // Update summary
+        function updateSummary() {
+            document.getElementById('summaryVariables').textContent = selectedVariables.size;
+            document.getElementById('summarySensors').textContent = sensorCount;
+            
+            document.getElementById('summaryFreq').textContent = selectedFrequency ? freqNames[selectedFrequency] : 'No seleccionada';
+            
+            // Recommend plan
+            let plan = 'Selecciona opciones';
+            if (selectedVariables.size > 0 && selectedFrequency) {
+                if (sensorCount <= 2) {
+                    plan = 'Plan Básico';
+                } else if (sensorCount <= 5) {
+                    plan = 'Plan Profesional';
+                } else {
+                    plan = 'Plan Empresarial';
+                }
+            }
+            document.getElementById('recommendedPlan').textContent = plan;
+        }
+
+        // Open quote modal
+        function openQuoteModal() {
+            if (selectedVariables.size === 0 || !selectedFrequency) {
+                document.getElementById('quoteResult').classList.remove('active');
+                document.getElementById('quoteEmpty').style.display = 'block';
+            } else {
+                document.getElementById('quoteEmpty').style.display = 'none';
+                generateQuoteModal();
+            }
+            
+            document.getElementById('quoteModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close quote modal
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Generate quote in modal
+        function generateQuoteModal() {
+            // Variables list
+            const variablesList = Array.from(selectedVariables).map(v => variableNames[v]).join(', ');
+            document.getElementById('modalVariables').textContent = variablesList;
+            
+            // Sensors
+            document.getElementById('modalSensors').textContent = sensorCount;
+            
+            // Frequency
+            document.getElementById('modalFreq').textContent = freqNames[selectedFrequency];
+            
+            // Installation cost
+            const installCostSOL = sensorCount * 300;
+            const installCostUSD = sensorCount * 80;
+            document.getElementById('modalInstallation').textContent = `S/. ${installCostSOL} (USD ${installCostUSD})`;
+            
+            // Recommended plan
+            let recommendedPlanKey = 'basic';
+            if (sensorCount <= 2) {
+                recommendedPlanKey = 'basic';
+            } else if (sensorCount <= 5) {
+                recommendedPlanKey = 'professional';
+            } else {
+                recommendedPlanKey = 'enterprise';
+            }
+            
+            const plan = planData[recommendedPlanKey];
+            document.getElementById('modalRecommendedPlan').textContent = plan.name;
+            document.getElementById('modalPlanPrice').textContent = `S/. ${plan.priceSOL}/mes (USD ${plan.priceUSD}/mes)`;
+            
+            // Highlight recommended plan
+            document.querySelectorAll('.mini-plan-card').forEach(card => {
+                card.classList.remove('recommended');
+                const badge = card.querySelector('.recommended-badge');
+                if (badge) badge.remove();
+            });
+            
+            const planCards = {
+                basic: document.getElementById('basicPlanCard'),
+                professional: document.getElementById('proPlanCard'),
+                enterprise: document.getElementById('enterprisePlanCard')
+            };
+            
+            if (planCards[recommendedPlanKey]) {
+                planCards[recommendedPlanKey].classList.add('recommended');
+                const badge = document.createElement('div');
+                badge.className = 'recommended-badge';
+                badge.textContent = '⭐ Recomendado';
+                planCards[recommendedPlanKey].style.position = 'relative';
+                planCards[recommendedPlanKey].insertBefore(badge, planCards[recommendedPlanKey].firstChild);
+            }
+            
+            document.getElementById('quoteResult').classList.add('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('quoteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQuoteModal();
+            }
+        });
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.faq-question span:last-child').textContent = '+';
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+                element.querySelector('span:last-child').textContent = '−';
+            }
+        }
+
+        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Gracias por contactarnos! Te responderemos pronto.');
+            alert('¡Gracias por contactarnos! Te responderemos en menos de 24 horas.');
             this.reset();
         });
 
-        // Header background on scroll
+        // Header effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(10, 15, 10, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(76, 175, 80, 0.1)';
             } else {
                 header.style.background = 'rgba(10, 15, 10, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
             }
         });
     </script>
